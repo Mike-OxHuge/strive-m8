@@ -14,6 +14,7 @@ const UserSchema = new Schema({
     enum: ["Admin", "User"],
     default: "User",
   },
+  refreshToken: { type: String },
 });
 
 UserSchema.pre("save", async function (next) {
