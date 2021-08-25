@@ -97,4 +97,18 @@ router.put("/me", JWTAuthMiddleware, async (req, res, next) => {
   }
 });
 
+router.post("/refreshToken", async (req, res, next) => {
+  try {
+    const { actualRefreshToken } = req.body;
+
+    // 1. Check the validity (and the integrity) of the refresh token, if everything is ok we can create a new pair of access and refresh token
+    const { accessToken, refreshToken } = await refreshTokens(
+      actualRefreshToken
+    );
+    res.send({ accessToken, refreshToken });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;
