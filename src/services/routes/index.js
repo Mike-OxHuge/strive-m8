@@ -3,7 +3,7 @@ const router = express.Router();
 router.use(express.json());
 
 import wakeUpRouter from "./wakeup/index.js";
-import UserRouter from "./users/index.js";
+import UserRouter from "./users-v2/index.js";
 
 router.use("/v1/wakeup", wakeUpRouter);
 router.use("/v1/user", UserRouter);
