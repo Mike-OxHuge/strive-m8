@@ -22,9 +22,9 @@ router.route("/login").post(async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await UserModel.checkCredentials(email, password);
-    res.cookie("jwt", "boo", { httpOnly: true });
     if (user) {
       const { accessToken, refreshToken } = await JWTAuth(user);
+      res.cookie("accessToken", accessToken, { httpOnly: true });
       res.status(200).send({ accessToken, refreshToken }); // access token stays on client
     } else {
       next(createError(401, "Credentials not valid!"));

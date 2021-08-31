@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e js -r dotenv/config ./src/server.js"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
+    "dev": "nodemon -e js -r dotenv/config ./src/index.js"
   },
   "dependencies": {
     "atob": "^2.1.2",
@@ -16,8 +17,10 @@
     "express": "^4.17.1",
     "express-list-endpoints": "^6.0.0",
     "http-errors": "^1.8.0",
+    "jest": "^27.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.8"
+    "mongoose": "^5.13.8",
+    "supertest": "^6.1.6"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
